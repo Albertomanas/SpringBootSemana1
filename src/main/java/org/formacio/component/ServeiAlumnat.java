@@ -1,5 +1,7 @@
 package org.formacio.component;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,29 @@ public class ServeiAlumnat {
 	}
 	
 	/**
-	 * Añadir un init para que al inicializar cree 2 alumnos
+	 * Añadir un init para que al inicializar cree 2 alumnos (@PostConstruct)
 	 */
+	
+	@PostConstruct
+	public void init() {
+		this.iniciarRepo();
+	}
+	
+	public void iniciarRepo() {
+		String[] alumnes = { "Antonia", "Joan" };
+		final int id = 1;
+		
+		int asignarId = id;
+		for (String alumne : alumnes) {
+			repositori.altaAlumne(asignarId, alumne);
+			asignarId = 2;
+		}
+		
+	}
+	
+	public int nomAlumne() {
+		return repositori.llistaAlumnes().size();
+	}
+	
+
 }
