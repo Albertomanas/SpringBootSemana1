@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class ServeiAlumnat {
 
 	@Autowired
-	private RepositoriAlumnes repo;
+	private RepositoriAlumnes repositori;
 	
 	/**
 	 * ha de donar d'alta a la base de dades d'alumnes l'alumne indicat amb 
@@ -17,11 +17,14 @@ public class ServeiAlumnat {
 	 */
 	public boolean matricula (int id, String alumne) {
 		if (alumne != null) {
-			repo.altaAlumne(id, alumne);
+			repositori.altaAlumne(id, alumne);
 			return true;
 		} else {
 			return false;
 		}
 	}
 	
+	/**
+	 * Añadir un init para que al inicializar cree 2 alumnos
+	 */
 }
